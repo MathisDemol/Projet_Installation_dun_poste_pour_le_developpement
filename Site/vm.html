@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Machine virtuelle – SAÉ S1.03</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">SAÉ S1.03</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link active" href="vm.html">Machine virtuelle</a></li>
+                <li class="nav-item"><a class="nav-link" href="web.html">Service web</a></li>
+                <li class="nav-item"><a class="nav-link" href="question.html">Questions</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="bg-light py-5 mt-5 border-bottom">
+    <div class="container text-center">
+        <h1 class="fw-bold mb-3">
+            Mise en place de la machine virtuelle
+        </h1>
+        <p class="lead text-muted">
+            SAÉ S1.03 – BUT Informatique
+        </p>
+        <p class="text-muted">
+            IUT de Paris – Rives de Seine
+        </p>
+    </div>
+</header>
+
+<main class="py-5">
+    <div class="container">
+
+        <section class="mb-5">
+            <p>
+                Pour héberger notre machine virtuelle nous avons utilisé <strong>VirtualBox</strong>. VirtualBox a été choisi car il s’agit d’un outil de virtualisation gratuit, open source et multiplateforme. Il permet de créer et de gérer facilement des machines virtuelles avec une interface graphique intuitive.
+            </p>
+            <p>
+                VirtualBox offre également une bonne gestion des modes réseau (NAT, pont, réseau interne), indispensables pour la mise en place et le test d’un serveur web accessible depuis la machine hôte. Cela permet d’héberger et de consulter localement le site web du rapport.
+            </p>
+            <p>
+                Nous avons choisi <strong>Debian</strong> comme distribution Linux, car c’est celle utilisée dans l’IUT et nous avions déjà connaissance de son interface graphique.
+            </p>
+            <p>
+                Lors de la création de la machine virtuelle, nous avons dû choisir le type de connexion réseau. Le mode réseau en <strong>accès par pont (bridged)</strong> a été sélectionné afin que la machine virtuelle soit considérée comme un ordinateur à part entière sur le réseau local. Elle obtient donc sa propre adresse IP, ce qui est idéal pour l’hébergement d’un serveur web.
+            </p>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="mb-3">Création des utilisateurs et groupes</h2>
+            <p>
+                Nous avons commencé par créer des utilisateurs sur la machine virtuelle. Pour cela, nous avons utilisé la commande <code>sudo</code> pour obtenir les droits administrateurs (root).
+            </p>
+            <p>
+                Exemple de commande pour créer l’utilisateur <strong>binome1_2</strong>
+            </p>
+            <div class="card mb-4 shadow-sm">
+                <img src="image/image_1.png" class="card-img-top" alt="Création utilisateur">
+                <div class="card-body">
+                    <p class="card-text text-center">Création de l’utilisateur binome1_2</p>
+                </div>
+            </div>
+            <p>
+                Lors de la suppression d’un utilisateur existant, nous avons dû mettre fin au processus de cet utilisateur pour pouvoir le supprimer correctement :
+            </p>
+            <div class="card mb-4 shadow-sm">
+                <img src="image/image_2.png" class="card-img-top" alt="Suppression d’un utilisateur existant">
+                <div class="card-body">
+                    <p class="card-text text-center">Suppression d’un utilisateur existant</p>
+                </div>
+            </div>
+            <p>
+                Ensuite, nous avons créé un utilisateur administrateur et lui avons attribué les droits sudo :
+            </p>
+            <ul>
+                <li><code>usermod</code> : modifie les paramètres d’un utilisateur existant</li>
+                <li><code>-G sudo</code> : ajoute l’utilisateur au groupe sudo</li>
+                <li><code>-a</code> : conserve les autres groupes de l’utilisateur</li>
+            </ul>
+            <p>
+                Nous avons ensuite créé un groupe <strong>binome1</strong> et ajouté nos deux premiers utilisateurs à ce groupe. La commande <code>getent group</code> a permis de vérifier l’ajout correct des utilisateurs :
+            </p>
+            <div class="card mb-4 shadow-sm">
+                <img src="image/image_3.png" class="card-img-top" alt="Vérification des membres du groupe">
+                <div class="card-body">
+                    <p class="card-text text-center">Vérification des membres du groupe</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="mb-3">Personnalisation du terminal</h2>
+            <p>
+                Pour améliorer l’expérience utilisateur sur le terminal, nous avons personnalisé l’invite de commande grâce à la variable <code>PS1</code> :
+            </p>
+            <ul>
+                <li><code>\e[45;37m</code> : couleur de fond rose et texte blanc</li>
+                <li><code>\A</code> : affiche l’heure au format HH:MM</li>
+                <li><code>\u</code> : affiche le nom de l’utilisateur connecté</li>
+                <li><code>\w</code> : affiche le répertoire courant</li>
+                <li><code>\$</code> : affiche <code>$</code> pour un utilisateur normal ou <code>#</code> pour l’administrateur</li>
+            </ul>
+            <p>
+                Nous avons ajouté cette définition dans le fichier <code>~/.bashrc</code>, puis rechargé la configuration avec <code>source ~/.bashrc</code>. Cela permet d’avoir le style défini à chaque ouverture du terminal :
+            </p>
+            <div class="card mb-4 shadow-sm">
+                <img src="image/image_4.png" class="card-img-top" alt="Style du terminal">
+                <div class="card-body">
+                    <p class="card-text text-center">Style du terminal</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+        <p class="mb-1">
+            SAÉ S1.03 – Installation d’un poste pour le développement
+        </p>
+        <p class="mb-0">
+            Mehdi Zinbi, Owen Tchanam, Mathis Demol
+        </p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

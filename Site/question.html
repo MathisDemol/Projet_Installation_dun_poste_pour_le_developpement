@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions – SAÉ S1.03</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">SAÉ S1.03</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="vm.html">Machine virtuelle</a></li>
+                <li class="nav-item"><a class="nav-link" href="web.html">Service web</a></li>
+                <li class="nav-item"><a class="nav-link active" href="question.html">Questions</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="bg-light py-5 mt-5 border-bottom">
+    <div class="container text-center">
+        <h1 class="fw-bold mb-3">
+            Réponses aux questions
+        </h1>
+        <p class="lead text-muted">
+            SAÉ S1.03 – BUT Informatique
+        </p>
+        <p class="text-muted">
+            IUT de Paris – Rives de Seine
+        </p>
+    </div>
+</header>
+
+<main class="py-5">
+    <div class="container">
+
+        <!-- Définition de la virtualisation -->
+        <section class="mb-5">
+            <h2 class="mb-3">Définition de la virtualisation</h2>
+            <p>
+                La virtualisation est une technique informatique qui permet d’utiliser un seul ordinateur ou serveur pour faire fonctionner plusieurs systèmes ou environnements en même temps. Chaque environnement est virtuel mais fonctionne comme s’il était réel, ce qui permet de mieux utiliser les ressources et de réduire les coûts.
+            </p>
+        </section>
+
+        <!-- Différences émulateur / simulateur / virtualisation -->
+        <section class="mb-5">
+            <h2 class="mb-3">Différence entre émulateur, simulateur et virtualisation</h2>
+            <ul>
+                <li><strong>Émulateur :</strong> permet de faire fonctionner sur un appareil des programmes faits pour un autre appareil.</li>
+                <li><strong>Simulateur :</strong> reproduit une situation pour s’entraîner ou faire des tests, sans que ce soit exactement la réalité.</li>
+                <li><strong>Virtualisation :</strong> permet d’utiliser plusieurs systèmes différents sur un seul ordinateur, en même temps.</li>
+            </ul>
+        </section>
+
+        <!-- Types de virtualisation -->
+        <section class="mb-5">
+            <h2 class="mb-3">Type de virtualisation pour VirtualBox, VMware Workstation et Stratus</h2>
+            <p>
+                <strong>VirtualBox</strong> et <strong>VMware Workstation</strong> sont des hyperviseurs de type 2 (hébergés), installés comme logiciels sur un OS hôte (Windows, Linux ou macOS) et permettant d’exécuter plusieurs machines virtuelles en parallèle. Ils reposent sur les ressources du système hôte et sont principalement utilisés pour le développement, les tests et la formation.
+            </p>
+            <p>
+                <strong>Stratus</strong> utilise une virtualisation de type 1 (hyperviseur natif), qui s’exécute directement sur le matériel, sans système d’exploitation hôte. Ce type est conçu pour des environnements professionnels critiques, nécessitant haute disponibilité et performances optimisées.
+            </p>
+        </section>
+
+        <!-- Forme et lieu de sauvegarde -->
+        <section class="mb-5">
+            <h2 class="mb-3">Forme et lieu de sauvegarde de la machine virtuelle</h2>
+            <p>
+                La machine virtuelle est sauvegardée sous forme d’un ensemble de fichiers sur le système hôte. Ces fichiers contiennent le disque virtuel et les paramètres de configuration. Par défaut, ils sont enregistrés dans le répertoire personnel de l’utilisateur, dans un dossier dédié aux machines virtuelles.
+            </p>
+        </section>
+
+        <!-- Choix techniques pour la VM -->
+        <section class="mb-5">
+            <h2 class="mb-3">Choix techniques pendant la création de la machine virtuelle</h2>
+            <ol>
+                <li><strong>Logiciel de virtualisation :</strong> VirtualBox, solution gratuite, multiplateforme, adaptée à l’enseignement et aux tests.</li>
+                <li><strong>Système d’exploitation :</strong> Debian, stable, léger et adapté aux serveurs.</li>
+                <li><strong>Type de machine virtuelle :</strong> architecture 64 bits supportée par le processeur de la machine hôte pour de meilleures performances.</li>
+                <li><strong>Allocation mémoire :</strong> 4 Go de RAM (possibilité de descendre à 2 Go pour un usage minimal).</li>
+                <li><strong>Nombre de processeurs :</strong> 1 cœur suffit pour les besoins de la SAÉ.</li>
+                <li><strong>Configuration réseau :</strong> mode pont pour rendre la VM accessible depuis le réseau local, permettant le test du serveur web depuis un autre appareil.</li>
+            </ol>
+        </section>
+
+    </div>
+</main>
+
+<footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+        <p class="mb-1">
+            SAÉ S1.03 – Installation d’un poste pour le développement
+        </p>
+        <p class="mb-0">
+            Mehdi Zinbi, Owen Tchanam, Mathis Demol
+        </p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

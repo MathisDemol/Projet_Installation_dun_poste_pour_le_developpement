@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Service web – SAÉ S1.03</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">SAÉ S1.03</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="vm.html">Machine virtuelle</a></li>
+                <li class="nav-item"><a class="nav-link active" href="web.html">Service web</a></li>
+                <li class="nav-item"><a class="nav-link" href="question.html">Questions</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="bg-light py-5 mt-5 border-bottom">
+    <div class="container text-center">
+        <h1 class="fw-bold mb-3">
+            Mise en place du serveur web
+        </h1>
+        <p class="lead text-muted">
+            SAÉ S1.03 – BUT Informatique
+        </p>
+        <p class="text-muted">
+            IUT de Paris – Rives de Seine
+        </p>
+    </div>
+</header>
+
+<main class="py-5">
+    <div class="container">
+
+        <section class="mb-5">
+            <p>
+                Pour héberger le site, <strong>Apache</strong> a été choisi car il s’agit d’un serveur web fiable, largement utilisé et open source. Nous l’avons donc installé sur notre machine virtuelle.
+            </p>
+
+            <div class="card mb-4 shadow-sm">
+                <img src="image/image_5.png" class="card-img-top" alt="Installation Apache">
+                <div class="card-body">
+                    <p class="card-text text-center">Installation d’Apache sur la machine virtuelle</p>
+                </div>
+            </div>
+
+            <p>
+                Nous avons ensuite lancé Apache avec la commande suivante et configuré le service pour qu’il démarre automatiquement au démarrage de la VM.
+            </p>
+
+            <div class="card mb-4 shadow-sm">
+                <img src="image/image_6.png" class="card-img-top" alt="Lancement Apache">
+                <div class="card-body">
+                    <p class="card-text text-center">Lancement du serveur Apache et activation du démarrage automatique</p>
+                </div>
+            </div>
+
+            <p>
+                Pour stocker nos pages HTML, nous avons créé un dossier dédié.
+            </p>
+
+            <div class="card mb-4 shadow-sm">
+                <img src="image/image_7.png" class="card-img-top" alt="Création du dossier">
+                <div class="card-body">
+                    <p class="card-text text-center">Création du dossier pour les pages HTML</p>
+                </div>
+            </div>
+
+            <p>
+                Nous avons donné la propriété du dossier à l’administrateur et changé les droits afin qu’il ait un accès complet pour pouvoir transférer les fichiers depuis PhpStorm vers la VM.
+            </p>
+
+            <div class="card mb-4 shadow-sm">
+                <img src="image/image_8.png" class="card-img-top" alt="Permissions dossier">
+                <div class="card-body">
+                    <p class="card-text text-center">Propriété et droits du dossier configurés pour l’administrateur</p>
+                </div>
+            </div>
+
+            <p>
+                Avec la commande <code>ip a</code>, nous avons récupéré l’adresse IP de la machine virtuelle.
+            </p>
+            <p>
+                Enfin, nous avons configuré PhpStorm avec l’adresse IP et le port (ici le port 22) pour envoyer directement les fichiers vers notre VM. Le serveur web est désormais opérationnel.
+            </p>
+
+            <div class="card mb-4 shadow-sm">
+                <img src="image/image_9.png" class="card-img-top" alt="Configuration PhpStorm">
+                <div class="card-body">
+                    <p class="card-text text-center">Configuration de PhpStorm pour le transfert des fichiers vers la VM</p>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+<footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+        <p class="mb-1">
+            SAÉ S1.03 – Installation d’un poste pour le développement
+        </p>
+        <p class="mb-0">
+            Mehdi Zinbi, Owen Tchanam, Mathis Demol
+        </p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
